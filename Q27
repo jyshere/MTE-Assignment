@@ -1,0 +1,47 @@
+27. Find the node where two singly linked lists intersect.  Write its algorithm, program. 
+Find its time and space complexities. Explain with suitable example.
+
+Algorithm:-
+Find the length of both lists A and B
+Align the longer list by moving its pointer ahead by abs(lenA - lenB) steps.
+Move both pointers simultaneously until they meet at the intersection node, or reach the end (if there is no intersection).
+
+Program:-
+int getLength(ListNode* head) {
+    int length = 0;
+    while (head != nullptr) {
+        length++;
+        head = head->next;
+    }
+    return length;
+}
+
+
+ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
+    int lenA = getLength(headA);
+    int lenB = getLength(headB);
+    
+    
+    while (lenA > lenB) {
+        headA = headA->next;
+        lenA--;
+    }
+    while (lenB > lenA) {
+        headB = headB->next;
+        lenB--;
+    }
+    
+   
+    while (headA != nullptr && headB != nullptr) {
+        if (headA == headB) {
+            return headA; 
+        }
+        headA = headA->next;
+        headB = headB->next;
+    }
+    
+    return nullptr;
+}
+
+Time Complexity: O(n + m)
+Space Complexity: O(1)
