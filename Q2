@@ -1,0 +1,42 @@
+*Q.Write a program to find the sum of elements in a given range [L, R] using a prefix sum array. Write its algorithm, program. Find its time and space complexities. 
+Explain with suitable example.* 
+
+class NumArray {   
+  int sum[];
+    public NumArray(int[] nums) {
+      int sum=0;
+      for(int i=0;i<nums.length;i++){
+        sum+=nums[i];
+        nums[i]=sum;
+
+      }
+      this.sum=nums;
+
+    }
+    
+    public int sumRange(int left, int right) {
+      if(left==0){
+        return sum[right];
+      }
+      return sum[right]-sum[left-1];
+    }
+   
+}      
+
+Algorithm 
+.Input the array.
+.Build a prefix sum array such that: prefix[0] = arr[0]
+.prefix[i] = prefix[i-1] + arr[i] for i > 0
+.To find the sum from index L to R, use:
+sum = prefix[R] - prefix[L-1] if L > 0
+.sum = prefix[R] if L == 0
+
+Complexities: 
+TC:- O(n)
+SC:- Can be O(n) if we take new array to store the prefix sum otherwise O(1).
+
+Examples:- 
+[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+[0,2]:-  (-2) + 0 + 3 = 1 
+[2,5]:-  3 + (-5) + 2 + (-1) = -1
+[0,5]:-  (-2) + 0 + 3 + (-5) + 2 + (-1) = -3
