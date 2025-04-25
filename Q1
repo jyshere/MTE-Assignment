@@ -1,0 +1,12 @@
+Q.Explain the concept of a prefix sum array and its applications.
+
+A prefix sum array is a way to quickly find the sum of numbers in a part of an array.
+Original: [2, 4, 6, 8] 
+Prefix sum: [2, 6, 12, 20]  prefix sum array, where each number is the total sum from the beginning up to that point.
+
+Applications of Prefix Sum Array:
+1.Fast Range Sum Queries: Quickly find the sum of numbers between two indexes in an array.
+2.Image Processing: In graphics, for quickly calculating pixel sums in a region.
+3.Counting Problems: Like how many even numbers between two points, or how many times a condition is true.
+4.Competitive Programming & Algorithms: Prefix sums are used in problems where you need to answer multiple sum queries quickly.
+5.Cumulative Analysis: In data analysis (sales, rainfall, etc.), you can track cumulative totals over time.
