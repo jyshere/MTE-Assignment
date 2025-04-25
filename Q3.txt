@@ -1,0 +1,44 @@
+*Q.Solve the problem of finding the equilibrium index in an array. Write its algorithm, 
+program. Find its time and space complexities. Explain with suitable example.*
+
+An equilibrium index in an array is an index i such that: Sum of elements on the left of i == Sum of elements on the right of i
+
+Algoritm:-
+.Calculate the total sum of the array.
+.Initialize leftSum = 0.
+.Traverse the array:
+.For each index i, calculate the right sum as: rightSum = totalSum - leftSum - arr[i]
+.If leftSum == rightSum, then i is the equilibrium index.
+Update leftSum += arr[i]
+
+Code:- // Done on LeetCode 
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int tsum=0;
+        for(int i:nums){
+          tsum+=i;
+        }
+
+        int lsum=0;
+        for(int i=0;i<nums.length;i++){
+           lsum+=nums[i];
+          if(lsum==tsum){
+            return i;
+          }
+         
+          tsum-=nums[i];
+        }
+        return -1;
+    }
+}
+
+Complexity:-
+TC:- O(n)
+SC:- O(1)
+
+Example: 
+nums = [1,7,3,6,5,6]
+
+The Equilibrium index is 3.
+Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+Right sum = nums[4] + nums[5] = 5 + 6 = 11
