@@ -1,0 +1,44 @@
+*Q.Find the k-th smallest element in a sorted matrix. Write its algorithm, program. Find its 
+time and space complexities. Explain with suitable example.  *
+
+Code:- //Done on LeetCode
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        int n = matrix.length;
+        List<Integer> list = new ArrayList<>();
+
+        for(int i=0;i<n;i++){
+          for(int j=0;j<n;j++){
+            list.add(matrix[i][j]);
+          }
+        } 
+        Collections.sort(list);
+        return list.get(k-1);
+    }
+}
+
+Algorithm:-
+Initialize an empty list to hold all elements from the matrix.
+
+Traverse each element in the matrix using nested loops:
+
+For each i from 0 to n - 1:
+
+For each j from 0 to n - 1:
+
+Add matrix[i][j] to the list.
+
+Sort the list in ascending order.
+
+Return the element at index k - 1 from the sorted list (since Java uses 0-based indexing).
+
+
+
+
+Complexities:-
+TC:-O(n^2 log n)
+SC:-O(n^2)  
+
+Examples:- 
+[[1,5,9],[10,11,13],[12,13,15]], k = 8
+[1,5,9,10,11,12,13,13,15], and the 8th smallest number is 13

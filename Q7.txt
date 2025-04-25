@@ -1,0 +1,11 @@
+*Q.Explain the sliding window technique and its use in string problems*
+
+
+The Sliding Window is a technique used to reduce the time complexity of problems that involve contiguous sequences, like subarrays or substrings.
+Instead of checking every possible window from scratch, we "slide" a fixed-size or dynamic window across the data and update the result efficiently.
+
+Problems involving substrings or subarrays
+You need to find:
+Maximum/minimum sum
+Length of longest/shortest substring
+

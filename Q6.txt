@@ -1,0 +1,52 @@
+*Q.Find the length of the longest substring without repeating characters. Write its 
+algorithm, program. Find its time and space complexities. Explain with suitable 
+example. *
+
+
+Code:- //Done on LeetCode
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int left=0;
+        int right=0;
+        int max=0;
+        HashSet<Character> c = new HashSet<>();
+        while(right<s.length()){
+          char ch = s.charAt(right);
+          if(!c.contains(ch)){
+            c.add(ch);
+            max=Math.max(max,(right-left)+1);
+            right++;
+          }
+          else{
+            c.remove(s.charAt(left));
+            left++;
+          }
+          }
+          return max;
+    }
+}
+
+
+Algorithm:-
+Use two pointers: left and right to define a sliding window.
+
+Use a HashSet to store characters currently in the window.
+
+Move the right pointer forward:
+
+If the character is not in the set, add it and update max length.
+
+If it is in the set, remove characters from the left until it's removed.
+
+Repeat until right reaches the end of the string.
+
+
+
+
+Complexities:-
+TC:-O(n)
+SC:-O(1)  
+
+Examples:- 
+s = "abcabcbb"
+The answer is "abc", with the length of 3.

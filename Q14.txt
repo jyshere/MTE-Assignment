@@ -1,0 +1,15 @@
+*Q. Find the median of two sorted arrays using binary search. Write its algorithm, program. 
+Find its time and space complexities. Explain with suitable example.*
+Code:- //Done on GFG
+
+
+Algorithm:-
+
+
+
+Complexities:-
+TC:-O(n)
+SC:-O(1)  
+
+Examples:- 
+

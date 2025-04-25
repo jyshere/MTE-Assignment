@@ -1,0 +1,95 @@
+*Q. Find the longest palindromic substring in a given string. Write its algorithm, program. 
+Find its time and space complexities. Explain with suitable example. *
+
+
+Code:- //Done on LeetCode
+class Solution {
+    public String longestPalindrome(String s) {
+      if(s.length()<2) return s;
+
+      String max="";
+
+      for(int i=0;i<s.length();i++){
+        for(int j=i+1;j<=s.length();j++){
+          String sb=s.substring(i,j);
+          if(ispalin(sb) && sb.length()>max.length()){
+            max=s.substring(i,j);
+          }
+          
+        }
+      }
+      return max;
+
+
+        
+    }
+    public static boolean ispalin(String s){
+      int left=0;
+      int right=s.length()-1;
+      while(left<right){
+        if(s.charAt(left)!=s.charAt(right)){
+          return false;
+        }
+        else{
+          left++;
+          right--;
+        }
+      }
+      return true;
+ }
+}
+
+Algorithm:-
+Initialize variables to track the start and end indices of the longest palindrome found.
+Iterate through the string:
+For each index i, expand around center i (odd length) and i, i+1 (even length).
+Update the start and end indices if a longer palindrome is found.
+Return the substring from the start to end indices.
+
+
+Complexities:-
+TC:-O(n*n)
+SC:-O(1)  
+
+Examples:- 
+Let's walk through the example with input "babad":
+
+At index 0 ('b'):
+
+Expand around center: 'b' → palindrome length = 1
+
+Expand around centers 'b' and 'a': not a palindrome
+
+Max length so far: 1 ("b")
+
+At index 1 ('a'):
+
+Expand around center: 'a' → 'bab' → palindrome length = 3
+
+Expand around centers 'a' and 'b': not a palindrome
+
+Max length so far: 3 ("bab")
+
+At index 2 ('b'):
+
+Expand around center: 'b' → 'aba' → palindrome length = 3
+
+Expand around centers 'b' and 'a': not a palindrome
+
+Max length remains: 3 ("bab" or "aba")
+
+At index 3 ('a'):
+
+Expand around center: 'a' → palindrome length = 1
+
+Expand around centers 'a' and 'd': not a palindrome
+
+Max length remains: 3
+
+At index 4 ('d'):
+
+Expand around center: 'd' → palindrome length = 1
+
+Expand around centers 'd' and beyond: not a palindrome
+
+Max length remains: 3

@@ -1,0 +1,51 @@
+*Q.Find the longest common prefix among a list of strings. Write its algorithm, program. 
+Find its time and space complexities. Explain with suitable example.*
+
+Code:- //Done on LeetCode
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+  
+      String s = strs[0];
+      for(int i=1;i<strs.length;i++){
+        while(!strs[i].startsWith(s)){
+          s=s.substring(0,s.length()-1);
+
+        if(s.isEmpty()){
+          return "";
+        }
+      }
+      }
+      return s;
+
+    }
+}
+
+Algorithm:-
+Assume the first string is the prefix.
+
+Compare the current prefix with each string in the array:
+
+Shrink the prefix until it matches the start of the string.
+
+If at any point, the prefix becomes empty → return "".
+
+
+
+
+Complexities:-
+TC:-O(n)
+SC:-O(1)  
+
+Examples:- 
+["flower", "flow", "flight"]
+Start with prefix = "flower"
+
+Compare with "flow":
+
+"flower" vs "flow" → shrink to "flow"
+
+Compare with "flight":
+
+"flow" vs "flight" → shrink: "flo" → "fl" 
+
+Final common prefix: "fl"

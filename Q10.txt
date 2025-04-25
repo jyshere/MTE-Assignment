@@ -1,0 +1,15 @@
+*Q.Generate all permutations of a given string. Write its algorithm, program. Find its time 
+and space complexities. Explain with suitable example. *
+Code:- //Done on GF
+
+
+Algorithm:-
+
+
+
+Complexities:-
+TC:-O(n)
+SC:-O(1)  
+
+Examples:- 
+
