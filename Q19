@@ -1,0 +1,35 @@
+19. How to find the maximum product subarray. Write its algorithm, program. Find its time 
+and space complexities. Explain with suitable example. 
+
+Algorithm:-
+Initialize: maxProd = nums[0]
+currMax = nums[0], currMin = nums[0]
+Traverse the array from index 1:
+If nums[i] is negative, swap currMax and currMin
+
+Update:currMax = max(nums[i], currMax * nums[i])
+currMin = min(nums[i], currMin * nums[i])
+Update maxProd = max(maxProd, currMax)
+Return maxProd
+
+Program:-
+int maxProduct(vector<int>& nums) {
+    int maxProd = nums[0];
+    int currMax = nums[0];
+    int currMin = nums[0];
+
+    for (int i = 1; i < nums.size(); i++) {
+        if (nums[i] < 0)
+            swap(currMax, currMin);
+
+        currMax = max(nums[i], currMax * nums[i]);
+        currMin = min(nums[i], currMin * nums[i]);
+
+        maxProd = max(maxProd, currMax);
+    }
+
+    return maxProd;
+}
+
+Time Complexity: O(n) 
+Space Complexity: O(1) 
