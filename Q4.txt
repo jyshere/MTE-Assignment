@@ -1,0 +1,49 @@
+*Q.Check if an array can be split into two parts such that the sum of the prefix equals the 
+sum of the suffix. Write its algorithm, program. Find its time and space complexities. 
+Explain with suitable example. *
+
+Code:- //Done on GFG
+class Solution {
+    public boolean canSplit(int arr[]) {
+        int tsum=0;
+       
+        for(int i:arr){
+            tsum+=i;
+        }
+        int lsum=0;
+        for(int i=0;i<arr.length;i++){
+             
+           
+            
+            if(tsum==lsum)
+            {
+                return true;
+            }
+             tsum-=arr[i];
+            lsum += arr[i];
+            
+        }
+        
+        return false;
+    }
+}
+
+Algorithm:-
+Calculate the total sum of the array.
+Initialize leftSum = 0
+Loop through the array:
+At each index i, add arr[i] to leftSum
+Calculate rightSum = totalSum - leftSum
+If leftSum == rightSum, return true (we can split here)
+If the loop ends and no match found, return false.
+
+
+Complexities:-
+TC:-O(n)
+SC:-O(1)  
+
+Examples:- 
+arr = {1, 2, 3, 3}
+We can split after index 1:
+Prefix: 1 + 2 = 3
+Suffix: 3 = 3 

@@ -1,0 +1,53 @@
+*Q.Find the maximum sum of any subarray of size K in a given array. Write its algorithm, 
+program. Find its time and space complexities. Explain with suitable example. *
+
+Code:- //Done on Leetcode
+class Solution {
+    public long maximumSubarraySum(int[] nums, int k) {
+        if (nums.length < k) return 0;
+
+        long windowSum = 0;
+        long maxSum = 0;
+
+        for (int i = 0; i < k; i++) {
+            windowSum += nums[i];
+        }
+
+        maxSum = windowSum;
+
+        for (int i = k; i < nums.length; i++) {
+            windowSum += nums[i] - nums[i - k];  
+            maxSum = Math.max(maxSum, windowSum);
+        }
+
+        return maxSum;
+    }
+}
+
+
+Algorithm:-
+Calculate the sum of the first K elements → windowSum
+Initialize maxSum = windowSum
+Slide the window:Subtract the element going out of the window
+Add the new element coming into the window
+Update maxSum if windowSum is greater
+
+
+
+
+Complexities:-
+TC:-O(n)
+SC:-O(1)  
+
+
+Examples:- 
+arr = {2, 1, 5, 1, 3, 2},  K = 3
+Subarrays of size 3:
+
+{2,1,5} → sum = 8
+
+{1,5,1} → sum = 7
+
+{5,1,3} → sum = 9 (maximum)
+
+{1,3,2} → sum = 6
