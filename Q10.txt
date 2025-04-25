@@ -3,13 +3,37 @@ and space complexities. Explain with suitable example. *
 Code:- //Done on GF
 
 
-Algorithm:-
+Algorithm:-Start with the first index of the string.
+
+Swap the current index with every other index (including itself).
+
+Recursively call the function for the next index.
+
+Backtrack (i.e., undo the swap) to restore the original string.
+
+Repeat until you reach the end of the string.
+
+Print/store the permutation when the base case is reached.
+
+Program:- 
+void generatePermutations(string &str, int start, int end) {
+    if (start == end) {
+        cout << str << endl;
+        return;
+    }
+
+    for (int i = start; i <= end; ++i) {
+        swap(str[start], str[i]); 
+        generatePermutations(str, start + 1, end);
+        swap(str[start], str[i]); 
+    }
+}
 
 
 
 Complexities:-
-TC:-O(n)
-SC:-O(1)  
+TC:-O(n * n!)
+SC:-O(n)  
 
-Examples:- 
+
 
