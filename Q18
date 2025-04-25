@@ -1,0 +1,42 @@
+18. Find the maximum XOR of two numbers in an array. Write its algorithm, program. 
+Find its time and space complexities. Explain with suitable example.
+
+Algorithm:-Initialize maxXor = 0, mask = 0.
+
+Iterate from the 31st bit (MSB) to 0th bit (LSB):
+
+Set the current bit in mask.
+
+Use a set to store all prefixes of numbers after masking (i.e., num & mask).
+
+Try setting the current bit in maxXor to 1 to see if it's possible to get a better result.
+
+For each prefix, check if (prefix ^ candidate) exists in the set.
+
+If it exists, update maxXor = candidate.
+
+Program:-
+int findMaximumXOR(vector<int>& nums) {
+    int maxXor = 0, mask = 0;
+
+    for (int i = 31; i >= 0; i--) {
+        mask |= (1 << i);  
+        unordered_set<int> prefixes;
+
+        for (int num : nums)
+            prefixes.insert(num & mask);
+
+        int candidate = maxXor | (1 << i);
+
+        for (int prefix : prefixes) {
+            if (prefixes.count(prefix ^ candidate)) {
+                maxXor = candidate;
+                break;
+            }
+        }
+    }
+
+Time Complexity:-O(32*n)
+Space Complexity:- O(n)
+
+    
