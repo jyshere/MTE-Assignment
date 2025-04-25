@@ -1,0 +1,16 @@
+22. How to check if a number is a power of two using bit manipulation. Write its algorithm, 
+program. Find its time and space complexities. Explain with suitable example. 
+
+Algorithm:-
+1. If n <= 0, return False (not a power of two).
+2. If n & (n - 1) == 0, return True (it is a power of two).
+3. Otherwise, return False.
+
+
+Program:-
+bool isPowerOfTwo(int n) {
+    return (n > 0) && (n & (n - 1)) == 0;
+}
+
+Time Complexity: O(1)
+Space Complexity: O(1)
