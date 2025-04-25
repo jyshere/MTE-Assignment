@@ -1,0 +1,37 @@
+25. Solve the problem of finding the next greater element for each element in an array. 
+Write its algorithm, program. Find its time and space complexities. Explain with 
+suitable example.  
+
+Algorithm
+Initialize an empty stack.
+Initialize an array result[] with all elements as -1 (default value indicating no next greater element).
+Traverse the input array from right to left:
+For each element, pop elements from the stack that are smaller than or equal to the current element.
+If the stack is not empty, set result[i] to the top of the stack (next greater element).
+Push the current element onto the stack.
+Return the result[] array.
+
+program:-
+vector<int> nextGreaterElement(vector<int>& arr) {
+    int n = arr.size();
+    vector<int> result(n, -1); 
+    stack<int> st;
+    
+  
+    for (int i = n - 1; i >= 0; i--) {
+        while (!st.empty() && st.top() <= arr[i]) {
+            st.pop();
+        }
+        
+        if (!st.empty()) {
+            result[i] = st.top();
+        }
+        
+        st.push(arr[i]);
+    }
+    
+    return result;
+}
+
+Time Complexity: O(n)
+Space Complexity: O(n)
