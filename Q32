@@ -1,0 +1,32 @@
+32. How to find the largest rectangle that can be formed in a histogram. Write its algorithm, 
+program. Find its time and space complexities. Explain with suitable example. 
+
+Algorithm:-
+Use a stack to store indices of bars.
+Traverse each bar: If the stack is empty or current bar is higher than the bar at the stack top, push it.
+Otherwise: Pop the stack, calculate area with popped height.
+Width = current index - index of the new top - 1.
+After traversal, pop all bars from the stack and calculate areas similarly.
+
+Program:-
+int largestRectangleArea(vector<int>& heights) {
+    stack<int> s;
+    int maxArea = 0;
+    int n = heights.size();
+    
+    for (int i = 0; i <= n; i++) {
+        int h = (i == n) ? 0 : heights[i];
+        while (!s.empty() && heights[s.top()] > h) {
+            int height = heights[s.top()];
+            s.pop();
+            int width = (s.empty()) ? i : (i - s.top() - 1);
+            maxArea = max(maxArea, height * width);
+        }
+        s.push(i);
+    }
+    
+    return maxArea;
+}
+
+Time Complexity: O(n)
+Space Complexity: O(n)
