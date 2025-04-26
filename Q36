@@ -1,0 +1,32 @@
+36. Generate all subsets of a given array. Write its algorithm, program. Find its time and 
+space complexities. Explain with suitable example. 
+
+Algorithm:-
+
+A set of size n has 2^n subsets.
+For each number from 0 to 2^n - 1:
+Use bits to decide whether to include an element in the subset.
+
+Program:-
+vector<vector<int>> subsets(vector<int>& nums) {
+    int n = nums.size();
+    int total = 1 << n; // 2^n subsets
+    vector<vector<int>> result;
+
+    for (int mask = 0; mask < total; mask++) {
+        vector<int> subset;
+        for (int i = 0; i < n; i++) {
+            if (mask & (1 << i)) {
+                subset.push_back(nums[i]);
+            }
+        }
+        result.push_back(subset);
+    }
+
+    return result;
+}
+
+Time Complexity:
+O(n × 2ⁿ):
+Space Complexity:
+O(n × 2ⁿ):
