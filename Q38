@@ -1,0 +1,33 @@
+38. Generate all permutations of a given array. Write its algorithm, program. Find its time 
+and space complexities. Explain with suitable example. 
+
+Algorithm (Backtracking by Swapping):
+Start from index 0.
+Swap current element with every element including itself.
+Recurse with next index.
+After recursion, backtrack (swap back) to restore array for next steps.
+
+Program:-
+void backtrack(vector<int>& nums, int index, vector<vector<int>>& result) {
+    if (index == nums.size()) {
+        result.push_back(nums);
+        return;
+    }
+
+    for (int i = index; i < nums.size(); i++) {
+        swap(nums[index], nums[i]);
+        backtrack(nums, index + 1, result);
+        swap(nums[index], nums[i]); // backtrack
+    }
+}
+
+vector<vector<int>> permute(vector<int>& nums) {
+    vector<vector<int>> result;
+    backtrack(nums, 0, result);
+    return result;
+}
+
+Time Complexity:
+O(n × n!)
+Space Complexity:
+O(n) 
