@@ -1,0 +1,49 @@
+34. Solve the problem of finding the subarray sum equal to K using hashing. Write its 
+algorithm, program. Find its time and space complexities. Explain with suitable 
+example. 
+
+Algorithm (Using Hashmap):
+Initialize a map prefixSumCount to store the frequency of prefix sums.
+Initialize prefixSum = 0 and count = 0.
+Traverse the array: Add the current element to prefixSum.
+Check if prefixSum - k exists in the map: If yes, it means a subarray ending here sums to k.
+Add the frequency of prefixSum - k to count.
+Update the frequency of prefixSum in the map.
+
+Program:-
+int subarraySum(vector<int>& nums, int k) {
+    unordered_map<int, int> prefixSumCount;
+    prefixSumCount[0] = 1; 
+    int prefixSum = 0, count = 0;
+    for (int num : nums) {
+        prefixSum += num;
+
+        if (prefixSumCount.find(prefixSum - k) != prefixSumCount.end()) {
+            count += prefixSumCount[prefixSum - k];
+        }
+
+        prefixSumCount[prefixSum]++;
+    }
+
+    return count;
+}
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Example
+Array: [1, 1, 1], k = 2
+
+prefixSum = 1 → no (1-2=-1 in map? No) → add prefixSum 1.
+
+prefixSum = 2 → (2-2=0 in map? Yes) → +1 to count (subarray [1,1]).
+
+prefixSum = 3 → (3-2=1 in map? Yes) → +1 to count (subarray [1,1]).
+
+Total subarrays = 2.
+
+Subarrays:
+
+[1,1] (index 0-1)
+
+[1,1] (index 1-2)
