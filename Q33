@@ -1,0 +1,23 @@
+33. Explain the sliding window technique and its applications in array problems.
+
+>The Sliding Window is a method used to solve array or string problems efficiently by:
+>Maintaining a window (subarray or substring) over the input data.
+>Moving the window forward when necessary to maintain conditions like size or sum.
+>Processing only parts of the array without recalculating everything.
+
+Applications:
+Maximum Sum Subarray of size K.
+Longest Substring without Repeating Characters.
+Minimum Size Subarray Sum.
+Find all anagrams of a string inside another string.
+Max element in every sliding window of size K 
+
+Example (Maximum Sum Subarray of Size K):
+Array: [1, 4, 2, 10, 23, 3, 1, 0, 20]
+k = 4
+Instead of checking all subarrays of size 4 separately:
+Window 1 (1+4+2+10) = 17
+Move window → (4+2+10+23) = (17 - 1 + 23) = 39
+Move window → (2+10+23+3) = (39 - 4 + 3) = 38
+... and so on.
+Efficient, O(n) instead of O(n*k)!
