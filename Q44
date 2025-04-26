@@ -1,0 +1,40 @@
+44. How to find two numbers in an array that add up to a target using hashing. Write its 
+algorithm, program. Find its time and space complexities. Explain with suitable 
+example. 
+
+Algorithm (using Hashing):
+Initialize an empty hash map (unordered_map).
+
+For each number num in the array:
+
+Compute complement = target - num.
+
+Check if complement already exists in the map:
+
+If yes, return the pair (complement, num).
+
+Otherwise, store num in the map.
+
+If no such pair is found after the loop, return "no solution" or an empty array.
+
+Program:-
+vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int, int> numMap; 
+
+    for (int i = 0; i < nums.size(); i++) {
+        int complement = target - nums[i];
+        
+        if (numMap.find(complement) != numMap.end()) {
+           
+            return {complement, nums[i]};
+        }
+        
+     
+        numMap[nums[i]] = i;
+    }
+
+    return {};
+}
+
+Time Complexity	O(n) 
+Space Complexity	O(n)
