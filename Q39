@@ -1,0 +1,8 @@
+39. Explain the difference between subsets and permutations with examples
+
+Feature	                            Subsets	                                              Permutations
+Definition	        Selection of any elements (order doesn't matter).	           Arrangement of all elements (order matters).
+Size	              Number of subsets = 2^n for a set of size n.                  Number of permutations = n! for a set of size n.
+Order Matters?	    No (Subset [1,2] is the same as [2,1]).	                     Yes (Permutation [1,2] is different from [2,1]).
+Can be partial?	   Yes, subsets can be of any size (0 to n).	                   Usually full arrangement of all elements (size = n).
+Example	{1,2}      subsets: {}, {1}, {2}, {1,2}	{1,2}                            permutations: [1,2], [2,1]
