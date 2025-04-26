@@ -1,0 +1,51 @@
+46. Write a program to find the longest palindromic substring in a given string. Write its 
+algorithm, program. Find its time and space complexities. Explain with suitable 
+example.
+
+Algorithm :
+A palindrome mirrors around its center.
+
+For each index in the string:
+
+Try to expand around it as odd length palindrome.
+
+Try to expand around it as even length palindrome.
+
+Update the longest palindrome if a longer one is found.
+
+Program:-
+string expandAroundCenter(const string& s, int left, int right) {
+    while (left >= 0 && right < s.size() && s[left] == s[right]) {
+        left--;
+        right++;
+    }
+    return s.substr(left + 1, right - left - 1);
+}
+
+string longestPalindrome(string s) {
+    if (s.empty()) return "";
+
+    string longest;
+    
+    for (int i = 0; i < s.size(); i++) {
+        string odd = expandAroundCenter(s, i, i);
+        
+    
+        string even = expandAroundCenter(s, i, i + 1);
+        
+       
+        if (odd.size() > longest.size()) {
+            longest = odd;
+        }
+        if (even.size() > longest.size()) {
+            longest = even;
+        }
+    }
+    
+    return longest;
+}
+
+Time Complexity:
+O(n²)
+Space Complexity:
+O(1) 
