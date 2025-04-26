@@ -1,0 +1,27 @@
+45. Explain the concept of priority queues and their applications in algorithm design. 
+
+A priority queue is a special type of queue where each element has a "priority" associated with it.
+
+Elements are served (dequeued) based on their priority, not just their order of insertion.
+
+Higher priority elements are dequeued before lower priority elements.
+
+Typically implemented using a Heap (usually a Max-Heap or Min-Heap).
+
+In Max-Heap Priority Queue → Highest value has the highest priority.
+In Min-Heap Priority Queue → Lowest value has the highest priority.
+
+Operations in Priority Queue:
+Insert (Push) → Insert an element based on its priority.
+
+Extract (Pop) → Remove the element with the highest (or lowest) priority.
+
+Peek/Top → View the element with the highest priority.
+
+Application	Description
+Dijkstra’s Algorithm	To find the shortest path in a graph (uses Min-Heap).
+Huffman Coding	To build optimal prefix codes (based on character frequencies).
+A Search Algorithm*	In pathfinding and graph traversal algorithms.
+Load Balancing	Jobs with higher priority are assigned first.
+Event Simulation	Events with the earliest time are processed first.
+Top K Problems   Finding top K frequent elements, largest numbers, etc.
