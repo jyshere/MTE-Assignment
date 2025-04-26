@@ -1,0 +1,29 @@
+29. Write a program to check if an integer is a palindrome without converting it to a string. 
+Write its algorithm, program. Find its time and space complexities. Explain with 
+suitable example. 
+
+Algorithm:-
+If the number is negative, it's not a palindrome (e.g., -121).
+If the number ends with 0 but isn't 0 itself, it's not a palindrome (e.g., 10).
+Reverse half of the number: Continuously take the last digit and build the reversed half.
+Stop when the reversed number becomes greater than or equal to the original number.
+Compare the original first half and the reversed second half:
+If they're equal, it's a palindrome. If the number has an odd number of digits, ignore the middle digit (by dividing the reversed half by 10).
+
+Program:
+bool isPalindrome(int x) {
+    if (x < 0 || (x % 10 == 0 && x != 0))
+        return false;
+
+    int reversedHalf = 0;
+    while (x > reversedHalf) {
+        int digit = x % 10;
+        reversedHalf = reversedHalf * 10 + digit;
+        x /= 10;
+    }
+
+    return (x == reversedHalf) || (x == reversedHalf / 10);
+}
+
+Time Complexity: O(log₁₀(n))
+Space Complexity: O(1)
