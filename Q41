@@ -1,0 +1,44 @@
+41. Write a program to find the maximum subarray sum using Kadane’s algorithm.
+
+Kadane's Algorithm is a well-known algorithm to find the maximum sum of a contiguous subarray within a one-dimensional numeric array.
+
+Kadane's Algorithm Explanation:
+The idea is to iterate through the array while maintaining the maximum sum of the subarray encountered so far.
+
+At each element, decide whether to:
+
+Add the current element to the existing subarray.
+
+Start a new subarray with the current element (if it offers a better sum).
+
+Algorithm:
+Initialize two variables:
+
+max_current: Stores the maximum sum of the subarray ending at the current element.
+
+max_global: Stores the maximum sum found so far across all subarrays.
+
+Iterate through the array:
+
+Update max_current to be the maximum of (current element) and (current element + max_current).
+
+If max_current exceeds max_global, update max_global.
+
+Return max_global which will hold the maximum subarray sum.
+
+Program:-
+int kadaneAlgorithm(vector<int>& nums) {
+    int max_current = nums[0];  
+    int max_global = nums[0];  
+
+    for (int i = 1; i < nums.size(); i++) {
+        max_current = max(nums[i], max_current + nums[i]);  
+        if (max_current > max_global) {
+            max_global = max_current;  
+        }
+    }
+    return max_global;
+}
+
+Time Complexity:O(n) 
+Space Complexity:O(1)
