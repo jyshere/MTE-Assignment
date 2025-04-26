@@ -1,0 +1,19 @@
+30. Explain the concept of linked lists and their applications in algorithm design.  
+
+A linked list is a linear data structure where elements (called nodes) are linked using pointers.
+Each node contains two parts: Data: The actual value.
+Pointer (or reference): The address of the next node in the list.
+
+Type	                  Description
+Singly Linked List   	Each node points to the next node.
+Doubly Linked List	  Each node points to both next and previous nodes.
+Circular Linked List	Last node points back to the head (first node).
+
+->Dynamic Memory Allocation
+->Implementing Data Structures
+->Efficient Insertions and Deletions
+->Real-World Problems:
+>Music playlist (circular linked list).
+>Browser history (doubly linked list).
+>Undo operations (using stack implemented via linked list).
+->Handling Large Datasets
