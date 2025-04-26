@@ -1,0 +1,69 @@
+42. Explain the concept of dynamic programming and its use in solving the maximum 
+subarray problem.
+
+Dynamic Programming 
+Dynamic Programming is a method for solving problems by breaking them down into simpler subproblems and storing the results of these 
+subproblems to avoid redundant computations.
+This technique is typically used when the problem exhibits overlapping subproblems and optimal substructure
+
+Key Characteristics of Dynamic Programming:
+Overlapping Subproblems:
+
+A problem can be broken into smaller subproblems that are solved multiple times.
+
+Instead of solving the same subproblem repeatedly, we solve it once and store its result.
+
+Optimal Substructure:
+
+The solution to the overall problem can be constructed efficiently from the solutions to its subproblems.
+
+If we can solve a subproblem optimally, we can combine these solutions to form the optimal solution to the larger problem.
+
+Define the State:
+
+Let dp[i] represent the maximum subarray sum ending at index i.
+
+The idea is to compute dp[i] by considering two possibilities:
+
+Include arr[i] in the subarray (which means adding it to dp[i-1]).
+
+Start a new subarray with just arr[i] (if arr[i] alone is larger than including it in the previous subarray).
+
+Recurrence Relation:
+
+dp[i] = max(arr[i], dp[i-1] + arr[i])
+
+This means that for each element, we choose the larger value between:
+
+The current element alone.
+
+The current element added to the previous subarray sum.
+
+Final Answer:
+
+The maximum subarray sum will be the largest value in the dp array, i.e., max(dp).
+
+Base Case:
+
+dp[0] = arr[0], since the maximum sum ending at the first element is just that element itself.
+
+Program:-
+int maxSubArray(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> dp(n);
+    
+    dp[0] = nums[0]; 
+    int maxSum = dp[0]; 
+    
+    for (int i = 1; i < n; i++) {
+        dp[i] = max(nums[i], dp[i-1] + nums[i]); 
+        maxSum = max(maxSum, dp[i]); 
+    }
+    
+    return maxSum;
+}
+
+Time Complexity:
+O(n)
+Space Complexity:
+O(n)
