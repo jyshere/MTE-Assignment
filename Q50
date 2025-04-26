@@ -1,0 +1,35 @@
+50. Explain the concept of equilibrium index and its applications in array problems. 
+Algorithm to Find Equilibrium Index:
+Find the total sum of the array.
+
+Initialize a variable leftSum = 0.
+
+Traverse the array:
+
+For each element, check:
+leftSum == (totalSum - leftSum - arr[i])
+If true, index i is an equilibrium index.
+
+Update leftSum += arr[i] after checking.
+
+Program:-
+
+int findEquilibriumIndex(vector<int>& nums) {
+    int totalSum = 0, leftSum = 0;
+    for (int num : nums) {
+        totalSum += num;
+    }
+
+    for (int i = 0; i < nums.size(); i++) {
+        if (leftSum == totalSum - leftSum - nums[i]) {
+            return i;
+        }
+        leftSum += nums[i];
+    }
+    
+    return -1; 
+}
+
+
+Time Complexity	O(n)
+Space Complexity	O(1)
