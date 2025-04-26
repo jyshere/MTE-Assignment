@@ -1,0 +1,13 @@
+47. Explain the concept of histogram problems and their applications in algorithm design. 
+
+A histogram represents bars with different heights.
+
+A typical histogram problem in algorithms is about finding the largest rectangle that can be formed between the bars.
+
+Each bar has a unit width, and we are asked to find areas based on the heights
+
+Application	                                            Description
+Stack Usage	                                Use stacks to find nearest smaller elements on the left and right.
+Largest Rectangle in Binary Matrix	        Reduce the 2D matrix to multiple histogram problems row by row.
+Skyline Problems	                         Histogram techniques help in merging building heights efficiently.
+Histogram Area Problems	                   Used in image processing, architecture modeling.
