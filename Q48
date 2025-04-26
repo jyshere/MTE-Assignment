@@ -1,0 +1,44 @@
+48. Solve the problem of finding the next permutation of a given array. Write its algorithm, 
+program. Find its time and space complexities. Explain with suitable example. 
+
+Find the Break Point:
+
+Traverse from right and find the first index i where nums[i] < nums[i+1].
+
+If no break point:
+
+Entire array is in descending order → reverse the array to get the smallest permutation.
+
+Find the Element to Swap:
+
+Find the smallest element larger than nums[i] from the right side.
+
+Swap nums[i] with that number.
+
+Reverse the part after index i to get the next permutation.
+
+Program:-
+
+void nextPermutation(vector<int>& nums) {
+    int n = nums.size(), i = n - 2;
+  
+    while (i >= 0 && nums[i] >= nums[i + 1]) {
+        i--;
+    }
+
+    if (i >= 0) {
+       
+        int j = n - 1;
+        while (j >= 0 && nums[j] <= nums[i]) {
+            j--;
+        }
+        swap(nums[i], nums[j]);
+    }
+
+ 
+    reverse(nums.begin() + i + 1, nums.end());
+}
+
+
+Time Complexity	O(n)
+Space Complexity	O(1)
